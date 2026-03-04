@@ -4,7 +4,7 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 
 // Load env FIRST
-require("dotenv").config();
+dotenv.config();
 
 // Debug check
 console.log("Razorpay Key:", process.env.RAZORPAY_KEY_ID);

@@ -92,7 +92,7 @@ const Profile = () => {
       className="min-h-screen flex items-center justify-center bg-black bg-cover bg-center px-4"
       style={{ backgroundImage: "url('/src/assets/vehicle-bg.png')" }}
     >
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/10"></div>
 
       {toast && <Toast message={toast} />}
 

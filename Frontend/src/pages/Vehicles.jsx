@@ -42,7 +42,7 @@ const Vehicles = () => {
       style={{ backgroundImage: "url('/src/assets/vehicle-bg.png')" }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 bg-black/20"></div>
 
       {/* Content */}
       <div className="relative max-w-6xl mx-auto">

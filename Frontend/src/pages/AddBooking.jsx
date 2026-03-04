@@ -113,7 +113,9 @@ useEffect(() => {
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center px-4"
       style={{ backgroundImage: "url('/src/assets/service-bg.png')" }}
-    >
+      
+    > 
+
       {toast && <Toast message={toast} />}
 
       <div className="bg-black rounded-xl shadow-xl p-8 w-full max-w-lg text-white 
