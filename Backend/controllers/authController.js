@@ -1,21 +1,11 @@
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// generate JWT
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "1d",
-  });
-};
-
 // REGISTER
-exports.registerUser = async (req, res) => {
+exports.register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: "All fields are required" });
-    }
 
     const userExists = await User.findOne({ email });
     if (userExists) {
@@ -26,45 +16,88 @@ exports.registerUser = async (req, res) => {
       name,
       email,
       password,
+      role: "user" // 🔒 ALWAYS user
     });
 
     res.status(201).json({
-      token: generateToken(user._id),
+      message: "User registered successfully",
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
-      },
+        role: user.role
+      }
     });
   } catch (error) {
-    res.status(500).json({ message: "Registration failed", error });
+    res.status(500).json({ message: error.message });
   }
 };
 
 // LOGIN
-exports.loginUser = async (req, res) => {
+exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
-      return res.status(400).json({ message: "All fields are required" });
-    }
-
     const user = await User.findOne({ email });
-
-    if (!user || !(await user.matchPassword(password))) {
-      return res.status(401).json({ message: "Invalid credentials" });
+    if (!user) {
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
+    const isMatch = await user.matchPassword(password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
+
+    // ✅ token with role
+    const token = jwt.sign(
+      {
+        id: user._id,
+        role: user.role
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    // ✅ include membership here
     res.json({
-      token: generateToken(user._id),
+      token,
       user: {
         id: user._id,
         name: user.name,
         email: user.email,
-      },
+        role: user.role,
+        membership: user?.membership.plan || null
+      }
     });
+
   } catch (error) {
-    res.status(500).json({ message: "Login failed", error });
+    console.error("Login error:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+/* ================= GET CURRENT USER ================= */
+
+exports.getMe = async (req, res) => {
+  try {
+
+    const user = await User.findById(req.user.id).select("-password");
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
+
+    res.json(user);
+
+  } catch (err) {
+
+    console.error("GetMe error:", err);
+
+    res.status(500).json({
+      message: "Failed to fetch user"
+    });
+
   }
 };

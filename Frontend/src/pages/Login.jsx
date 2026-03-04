@@ -1,68 +1,111 @@
 import { useState } from "react";
-import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import API from "../api/axios";
+import { loginUser } from "../utils/auth";
+import Toast from "../components/Toast";
 
-function Login() {
+const Login = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [toast, setToast] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setMessage("");
+    setError("");
+    setSuccess("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await API.post("/auth/login", {
         email,
         password,
       });
 
-      localStorage.setItem("token", res.data.token);
-      navigate("/dashboard");
-    } catch {
-      setMessage("Invalid credentials");
+      // save token + user
+      loginUser(res.data);
+
+      setToast("Login successful ✅");
+      setTimeout(() => setToast(""), 2000);
+
+      // redirect after delay
+      setTimeout(() => {
+        if (res.data.user.role === "admin") {
+          navigate("/admin", { replace: true });
+        } else {
+          navigate("/dashboard", { replace: true });
+        }
+      }, 2000);
+    } catch (err) {
+      setError(err.response?.data?.message || "Login failed");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form onSubmit={handleLogin} className="bg-white p-6 rounded shadow w-80">
-        <h2 className="text-xl font-bold mb-4 text-center">Login</h2>
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: "url('/src/assets/login-bg.png')" }}
+    >
+      {toast && <Toast message={toast} />}
+      
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/30"></div>
 
-        {message && <p className="text-red-500 text-sm mb-2">{message}</p>}
+      {/* Login Card */}
+      <div className="relative bg-black w-[360px] h-[360px] rounded-lg shadow-xl p-6 flex flex-col justify-center">
+        <h3 className="text-xl font-bold text-center mb-2 text-white font-large">
+          Welcome to LuxDrive Auto Care
+        </h3>
+        <h2 className="text-xl font-bold text-center mb-4 text-white">Login</h2>
 
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full border p-2 mb-3"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        {error && (
+          <p className="text-red-500 text-sm text-center mb-2">{error}</p>
+        )}
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full border p-2 mb-3"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        {success && (
+          <p className="text-green-600 text-sm text-center mb-2">
+            {success}
+          </p>
+        )}
 
-        <button className="w-full bg-blue-600 text-white py-2 rounded">
-          Login
-        </button>
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full bg-white/10 text-white border px-3 py-2 rounded mb-3"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <p className="text-sm text-center mt-3">
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full bg-white/10 text-white border px-3 py-2 rounded mb-4"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+          >
+            Login 
+          </button>
+        </form>
+
+        <p className="text-sm text-white text-center mt-4">
           Don’t have an account?{" "}
-          <Link to="/register" className="text-blue-600">
-            Register
+          <Link to="/register" className="text-blue-400 font-medium">
+            Create Account
           </Link>
         </p>
-      </form>
+      </div>
     </div>
   );
-}
+};
 
 export default Login;

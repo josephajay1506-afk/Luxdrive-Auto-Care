@@ -1,86 +1,103 @@
 import { useState } from "react";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import API from "../api/axios";
+import Toast from "../components/Toast";
 
-function Register() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-  const [message, setMessage] = useState("");
+const Register = () => {
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [toast, setToast] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("");
+    setError("");
+    setSuccess("");
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        form
-      );
+      await API.post("/auth/register", {
+        name,
+        email,
+        password,
+      });
 
-      setMessage("Registered successfully");
-      console.log("REGISTER RESPONSE:", res.data);
+      setToast("Account created successfully ✅");
+      setTimeout(() => navigate("/login"), 2000);
+
     } catch (err) {
-      setMessage(err.response?.data?.message || "Registration failed");
+      setError(err.response?.data?.message || "Registration failed");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-900">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-6 rounded w-96"
-      >
-        <h2 className="text-2xl font-bold mb-4 text-center">Register</h2>
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover bg-center px-4"
+      style={{ backgroundImage: "url('/src/assets/login-bg.png')" }}
+    >
+      {toast && <Toast message={toast} />}
+      
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/30"></div>
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          className="w-full p-2 border mb-3"
-          onChange={handleChange}
-          required
-        />
+      {/* Card */}
+      <div className="relative bg-black w-full max-w-sm p-8 rounded-xl shadow-xl">
+        
+        <h2 className="text-2xl font-bold text-center mb-6 text-white">
+          Create Account
+        </h2>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="w-full p-2 border mb-3"
-          onChange={handleChange}
-          required
-        />
+        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+        {success && <p className="text-green-600 text-sm mb-4">{success}</p>}
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className="w-full p-2 border mb-3"
-          onChange={handleChange}
-          required
-        />
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="w-full bg-white/10 text-white border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
 
-        <button className="w-full bg-blue-700 text-white p-2 rounded">
-          Register
-        </button>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className="w-full bg-white/10 text-white border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
 
-        {message && (
-          <p className="text-center text-red-500 mt-3">{message}</p>
-        )}
-        <p className="text-center mt-4 text-sm">
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className="w-full bg-white/10 text-white border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+          >
+            Create Account
+          </button>
+        </form>
+
+        <p className="text-center text-white text-sm mt-6">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 font-semibold">
-          Login
-          </a>
+          <Link to="/login" className="text-blue-400 font-medium">
+            Login
+          </Link>
         </p>
-      </form>
+      </div>
     </div>
   );
-}
+};
 
 export default Register;

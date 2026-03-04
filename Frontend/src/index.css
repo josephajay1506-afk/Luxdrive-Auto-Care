@@ -1,3 +1,291 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* stylelint-disable at-rule-no-unknown */
+/* Use @import instead of Tailwind at-rules to avoid editor/validator "Unknown at rule" errors */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("/luxury-car-bg.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  max-width: 900px;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.hero-content p {
+  margin-top: 15px;
+  font-size: 1.4rem;
+  color: #e5e7eb;
+}
+
+/* BRANDS */
+.brands {
+  padding: 60px 40px;
+  background: white;
+  text-align: center;
+}
+
+.brand-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 35px;
+  margin-top: 30px;
+}
+
+.brand-logos img {
+  height: 60px;
+  opacity: 0.9;
+}
+
+/* HIGHLIGHTS */
+.highlights {
+  padding: 60px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  background: #f8fafc;
+}
+
+.highlight-card {
+  position: relative;
+  width: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.highlight-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.highlight-card p {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-weight: 600;
+}
+
+/* SERVICES */
+.services {
+  padding: 60px;
+  background: white;
+  text-align: center;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.service-box {
+  padding: 30px;
+  border-radius: 15px;
+  background: #f1f5f9;
+  font-weight: 600;
+}
+
+/* FUNCTIONAL */
+.dashboard-functional {
+  padding: 60px;
+  background: #f8fafc;
+}
+.dashboard-functional-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.dashboard-functional-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.dashboard-functional-content p {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #475569;
+}   
+.dashboard-functional-content img {
+  margin-top: 40px;
+  width: 100%;
+  border-radius: 15px;
+}   
+
+/* FOOTER */
+.footer {
+  padding: 40px;
+  background: #1e293b;
+  color: #cbd5e1;
+  text-align: center;
+}
+.footer p {
+  margin: 0;
+}   
+.footer a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+}   
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .highlights {
+    flex-direction: column;
+    align-items: center;
+  }
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.4s;
+}
+
+.delay-3 {
+  animation-delay: 0.6s;
+}
+
+.delay-4 {
+  animation-delay: 0.8s;
+}
+.delay-5 {
+  animation-delay: 1s;
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.4s ease-out;
+}
+
+.animate-slide-in-delay {
+  animation-delay: 0.3s;
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slide-in-left {
+  animation: slideInLeft 0.4s ease-out;
+}
+.animate-slide-in-left-delay {
+  animation-delay: 0.3s;
+}
+
+.dashboard-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 32px;
+  border-radius: 20px;
+  min-height: 180px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 0 30px rgba(59,130,246,0.6);
+}
+
+.dashboard-card h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.dashboard-card p {
+  color: #ccc;
+  margin-bottom: 15px;
+}
+
+.dashboard-card button {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.about-card {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  justify-content: center;
+}
+
+.about-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 0 30px rgb(255, 255, 255);
+}
+
+.about-card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.about-card p,
+.about-card ul {
+  color: #ccc;
+}
