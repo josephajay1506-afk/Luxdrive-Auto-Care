@@ -90,7 +90,7 @@ const Profile = () => {
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-black bg-cover bg-center px-4"
-      style={{ backgroundImage: "url('/src/assets/vehicle-bg.png')" }}
+      style={{ backgroundImage: "url('/images/vehicle-bg.png')" }}
     >
       <div className="absolute inset-0 bg-black/10"></div>
 
