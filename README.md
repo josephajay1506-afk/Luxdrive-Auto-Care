@@ -153,26 +153,6 @@ LuxDrive Auto Care is built using the **MERN Stack Architecture**.
 
 ---
 
-# 📁 Project Structure
-LuxDrive-Auto-Care
-│
-├── frontend
-│ ├── components
-│ ├── pages
-│ ├── services
-│ └── assets
-│
-├── backend
-│ ├── controllers
-│ ├── models
-│ ├── routes
-│ └── middleware
-│
-└── README.md
-
-
----
-
 # 🚀 Future Enhancements
 
 - Email and SMS notifications
@@ -192,3 +172,4 @@ Full Stack Development Project
 ---
 
 ⭐ If you found this project useful, consider giving it a star on GitHub.
+
