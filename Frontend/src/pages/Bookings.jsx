@@ -96,7 +96,7 @@ const Bookings = () => {
   return (
     <div
       className="min-h-screen bg-cover bg-center px-4 py-10 relative"
-      style={{ backgroundImage: "url('/src/assets/service-bg.png')" }}
+      style={{ backgroundImage: "url('/images/service-bg.png')" }}
     >
       <div className="absolute inset-0 bg-black/10"></div>
 

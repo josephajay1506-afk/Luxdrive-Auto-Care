@@ -39,7 +39,7 @@ const Vehicles = () => {
   return (
     <div
       className="min-h-screen bg-cover bg-center px-4 py-10 relative"
-      style={{ backgroundImage: "url('/src/assets/vehicle-bg.png')" }}
+      style={{ backgroundImage: "url('/vehicle-bg.png')" }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/20"></div>

@@ -112,7 +112,7 @@ useEffect(() => {
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center px-4"
-      style={{ backgroundImage: "url('/src/assets/service-bg.png')" }}
+      style={{ backgroundImage: "url('/images/service-bg.png')" }}
       
     > 
 
