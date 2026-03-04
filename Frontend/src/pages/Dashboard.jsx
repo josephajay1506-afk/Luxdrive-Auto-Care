@@ -824,7 +824,7 @@ className="flex justify-center mb-12"
 <div className="flex items-center gap-4 bg-white/10 backdrop-blur-lg border border-white/10 rounded-xl px-6 py-3 shadow-lg hover:shadow-white/50 hover:border-white">
 
 <img
-src="/src/assets/google.png"
+src="/images/google.png"
 alt="Google Reviews"
 className="w-10 h-10"
 />
