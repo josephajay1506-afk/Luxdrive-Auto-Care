@@ -98,7 +98,7 @@ const Bookings = () => {
       className="min-h-screen bg-cover bg-center px-4 py-10 relative"
       style={{ backgroundImage: "url('/images/service-bg.png')" }}
     >
-      <div className="absolute inset-0 bg-black/10"></div>
+      <div className="absolute inset-0 bg-black/30"></div>
 
       {/* Header */}
       <div className="max-w-6xl mx-auto mb-8 flex justify-between items-center">

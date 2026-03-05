@@ -51,7 +51,7 @@ const AddVehicle = () => {
       {toast && <Toast message={toast} />}
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 bg-black/30"></div>
 
 
       {/* Card */}

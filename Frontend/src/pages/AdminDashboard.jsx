@@ -117,7 +117,7 @@ useEffect(() => {
   return (
     <div
       className="min-h-screen bg-cover bg-center px-4 py-10 relative"
-      style={{ backgroundImage: "url('/src/assets/admin-bg.png')" }}
+      style={{ backgroundImage: "url('/images/admin-bg.png')" }}
     >
       {toast && <Toast message={toast} />}
 
