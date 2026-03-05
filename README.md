@@ -12,6 +12,16 @@ The platform focuses on delivering a **premium service management experience for
 
 ---
 
+# 🌐 Live Application
+
+Frontend Application  
+https://luxdrive-auto-care.vercel.app
+
+Backend API  
+https://luxdrive-auto-care.onrender.com
+
+---
+
 # 📌 Project Overview
 
 Many automobile workshops still rely on manual systems or fragmented software tools to manage service operations. These traditional methods often involve handwritten records, disconnected spreadsheets, or basic booking systems that do not provide a complete overview of workshop activities. As a result, workshops may face issues such as inefficient booking management, difficulty tracking service progress, inconsistent invoice generation, and limited visibility into business performance.
@@ -83,9 +93,8 @@ The admin dashboard includes analytics and insights such as:
 
 - Payment Amount Analytics
 - Profit Analytics
+- Revenue Summary
 - Service Popularity
-- Workshop Bay Utilization
-- Revenue tracking
 
 These analytics help workshop administrators monitor performance and make informed business decisions.
 
@@ -97,9 +106,10 @@ The platform integrates **Razorpay** to enable secure online payments.
 
 Features include:
 - Secure payment gateway
-- Payment verification
+- Payment verification and validation
 - Invoice payment tracking
 - Digital transaction records
+- Payment logs for administrators
 
 ---
 
@@ -107,7 +117,9 @@ Features include:
 
 After service completion, the system automatically generates a **professional PDF invoice** including:
 
-- Service details
+- Customer information
+- Vehicle details
+- Selected services  
 - Accessories installed
 - Taxes and discounts
 - Final payable amount
@@ -117,6 +129,38 @@ Customers can download invoices for maintenance documentation and transparency.
 
 ---
 
+# 🖼 Application Screenshots
+
+## Login Page
+![Login](screenshots/Login.png)
+
+## Customer Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+## My Vehicles
+![My Vehicles](screenshots/vehicles.png)
+
+## Service Booking Page
+![Booking](screenshots/booking.png)
+
+## Profile
+![Profile](screenshots/profile.png)
+
+## Resigter Vehicle
+![Register Vehicle](screenshots/register_vehicle.png)
+
+## Book Service
+![Book Service](screenshots/book_service.png)
+
+## Invoice Generation
+![Invoice](screenshots/invoice.png)
+
+## Admin Analytics Dashboard
+![Analytics](screenshots/analytics.png)
+
+---
+
+
 # 🧑‍💻 Technology Stack
 
 LuxDrive Auto Care is built using the **MERN Stack Architecture**.
@@ -125,6 +169,7 @@ LuxDrive Auto Care is built using the **MERN Stack Architecture**.
 - React.js
 - Tailwind CSS
 - Framer Motion
+- Recharts
 
 ### Backend
 - Node.js
@@ -132,10 +177,10 @@ LuxDrive Auto Care is built using the **MERN Stack Architecture**.
 
 ### Database
 - MongoDB
-- Mongoose
+- Mongoose ODM
 
 ### Payment Integration
-- Razorpay
+- Razorpay API
 
 ### Additional Tools
 - Chart libraries for analytics
@@ -153,7 +198,24 @@ LuxDrive Auto Care is built using the **MERN Stack Architecture**.
 
 ---
 
-# 🚀 Future Enhancements
+# 🚀 Deployment Architecture
+
+The project is deployed using modern cloud infrastructure.
+
+Frontend Hosting  
+Vercel
+
+Backend Hosting  
+Render
+
+Database Hosting  
+MongoDB Atlas
+
+This architecture ensures **scalability, reliability, and secure cloud-based operations**.
+
+---
+
+# 🔮 Future Enhancements
 
 - Email and SMS notifications
 - Workshop inventory management
@@ -165,11 +227,11 @@ LuxDrive Auto Care is built using the **MERN Stack Architecture**.
 
 # 👨‍💻 Author
 
-**Ajay Joseph**  
-SRM College  
+**Ajay Joseph**    
 Full Stack Development Project
 
 ---
 
 ⭐ If you found this project useful, consider giving it a star on GitHub.
+
 
