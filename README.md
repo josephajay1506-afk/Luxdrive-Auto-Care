@@ -132,34 +132,34 @@ Customers can download invoices for maintenance documentation and transparency.
 # 🖼 Application Screenshots
 
 ## Login Page
-![Login](screenshots/Login.png)
+![Login](Screenshots/Login.png)
 
 ## Customer Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](Screenshots/dashboard.png)
 
 ## My Vehicles
-![My Vehicles](screenshots/vehicles.png)
+![My Vehicles](Screenshots/vehicles.png)
 
 ## Service Booking Page
-![Booking](screenshots/booking.png)
+![Booking](Screenshots/booking.png)
 
 ## Profile
-![Profile](screenshots/profile.png)
+![Profile](Screenshots/profile.png)
 
 ## Resigter Vehicle
-![Register Vehicle](screenshots/register_vehicle.png)
+![Register Vehicle](Screenshots/register_vehicle.png)
 
 ## Book Service
-![Book Service](screenshots/book_service.png)
+![Book Service](Screenshots/book_service.png)
 
 ## Invoice Generation
-![Invoice](screenshots/invoice.png)
+![Invoice](Screenshots/invoice.png)
 
 ## Admin Dashboard
-![Admin Dashboard](screenshots/admin.png)
+![Admin Dashboard](Screenshots/admin.png)
 
 ## Admin Analytics 
-![Admin Analytics](screenshots/analytics.png)
+![Admin Analytics](Screenshots/analytics.png)
 
 ---
 
@@ -236,6 +236,7 @@ Full Stack Development Project
 ---
 
 ⭐ If you found this project useful, consider giving it a star on GitHub.
+
 
 
 
