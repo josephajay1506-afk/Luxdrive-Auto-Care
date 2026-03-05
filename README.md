@@ -155,8 +155,11 @@ Customers can download invoices for maintenance documentation and transparency.
 ## Invoice Generation
 ![Invoice](screenshots/invoice.png)
 
-## Admin Analytics Dashboard
-![Analytics](screenshots/analytics.png)
+## Admin Dashboard
+![Admin Dashboard](screenshots/admin.png)
+
+## Admin Analytics 
+![Admin Analytics](screenshots/analytics.png)
 
 ---
 
@@ -203,13 +206,13 @@ LuxDrive Auto Care is built using the **MERN Stack Architecture**.
 The project is deployed using modern cloud infrastructure.
 
 Frontend Hosting  
-Vercel
+- Vercel
 
-Backend Hosting  
-Render
+Backend Hosting
+- Render
 
-Database Hosting  
-MongoDB Atlas
+Database Hosting
+- MongoDB Atlas
 
 This architecture ensures **scalability, reliability, and secure cloud-based operations**.
 
@@ -233,5 +236,6 @@ Full Stack Development Project
 ---
 
 ⭐ If you found this project useful, consider giving it a star on GitHub.
+
 
 
