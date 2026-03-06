@@ -132,7 +132,7 @@ Customers can download invoices for maintenance documentation and transparency.
 # 🖼 Application Screenshots
 
 ## Login Page
-![Login](Screenshots/Login.png)
+![Login](Screenshots/login.png)
 
 ## Customer Dashboard
 ![Dashboard](Screenshots/dashboard.png)
@@ -236,6 +236,7 @@ Full Stack Development Project
 ---
 
 ⭐ If you found this project useful, consider giving it a star on GitHub.
+
 
 
 
