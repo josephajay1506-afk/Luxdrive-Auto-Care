@@ -118,7 +118,7 @@ const Membership = () => {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        "http://localhost:5000/api/membership/my-membership",
+        "/membership/my-membership",
         {
           method: "GET",
           headers: {
@@ -127,6 +127,7 @@ const Membership = () => {
           }
         }
       );
+      setMembership(res.data);
 
       if (!res.ok) {
         const text = await res.text();

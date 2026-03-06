@@ -34,6 +34,30 @@ app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/tuning", require("./routes/tuningRoutes"));
 app.use("/api/accessories", require("./routes/accessoryRoutes"));
 
+// ================= ROOT ROUTE =================
+app.get("/", (req, res) => {
+  res.send("🚀 LuxDrive Auto Care API is running successfully");
+});
+
+// ================= 404 HANDLER =================
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "API route not found"
+  });
+});
+
+// ================= ERROR HANDLER =================
+app.use((err, req, res, next) => {
+  console.error("Server Error:", err.message);
+
+  res.status(500).json({
+    success: false,
+    message: "Internal Server Error"
+  });
+});
+
+// ================= SERVER =================
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
   console.log(`Server running on port ${PORT}`)
