@@ -36,7 +36,7 @@ const Register = () => {
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center px-4"
-      style={{ backgroundImage: "url('/src/assets/login-bg.png')" }}
+      style={{ backgroundImage: "url('/images/login-bg.png')" }}
     >
       {toast && <Toast message={toast} />}
       

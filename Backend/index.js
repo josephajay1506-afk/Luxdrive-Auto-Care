@@ -39,6 +39,9 @@ app.get("/", (req, res) => {
   res.send("🚀 LuxDrive Auto Care API is running successfully");
 });
 
+// ================= FAVICON HANDLER =================
+app.get("/favicon.ico", (req, res) => res.status(204).end());
+
 // ================= 404 HANDLER =================
 app.use((req, res) => {
   res.status(404).json({
